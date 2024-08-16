@@ -15,6 +15,6 @@ export class SignupComponent {
     email : ""
   }; 
   onSubmit(): void{
-    console.log(this.newSign);
+    
   }
 }
