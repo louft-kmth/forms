@@ -1,0 +1,48 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      Form submitted ? {{myForm.submitted}}
+      Form valid ? {{myForm.valid}}
+      Form invalid ? {{myForm.invalid}}
+    </div>
+  
+    <fieldset>
+      <label for="firstname-sign"> firstname</label>
+      <input id="firstname-sign" name="firstname-sign" type="text" [(ngModel)]="newSign.firstname" #title="ngModel" required minlength="3" maxlength="15"/>
+    </fieldset>
+  
+    <!-- Message d'erreurs de firstname -->
+    <div *ngIf="firstname.errors">
+      <span *ngIf="firstname.errors?.['required']">Le champ  firstname est requis</span>
+      <span *ngIf="firstname.errors?.['minlength']">La longueur minimale doit être supérieure à 3</span>
+      <span *ngIf="firstname.errors?.['maxlength']">La longueur maximale doit être inférieure à 15 </span>
+    </div>
+  
+    
+    <fieldset>
+        <label for="lastname-sign"> lastname</label>
+        <input id="lastname-sign" name="lastname-sign" type="text" [(ngModel)]="newSign.lastname" #title="ngModel" required minlength="3" maxlength="15"/>
+      </fieldset>
+    
+      <!-- Message d'erreurs de lastname -->
+      <div *ngIf="lastname.errors">
+        <span *ngIf="lastname.errors?.['required']">Le champ  lastname est requis</span>
+        <span *ngIf="lastname.errors?.['minlength']">La longueur minimale doit être supérieure à 3</span>
+        <span *ngIf="lastname.errors?.['maxlength']">La longueur maximale doit être inférieure à 15 </span>
+      </div>
+
+  
+    <fieldset>
+      <label for="email.sign">email</label>
+      <input id="email.sign" name="email.sign" type="email" [(ngModel)]="newSign.email" #contact="ngModel" required email>
+    </fieldset>
+  
+    <!-- Message d'erreurs de contact -->
+    <div *ngIf="email.errors">
+      <span *ngIf="email.errors?.['required']">Le champ email est requis</span>
+      <span *ngIf="email.errors?.['email']">L'adresse email doit être valide</span>
+    </div>
+  
+  
+    <button type="reset">Restaurer</button>
+    <button type="submit">Sauvegarder</button>
+  </form>
